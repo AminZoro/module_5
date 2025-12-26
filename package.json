@@ -1,0 +1,23 @@
+{
+  "name": "module_5",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "exercise4": "nodemon exercise4/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AminZoro/module_5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AminZoro/module_5/issues"
+  },
+  "homepage": "https://github.com/AminZoro/module_5#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

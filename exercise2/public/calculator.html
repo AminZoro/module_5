@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+    <title>Calculator</title>
+</head>
+
+<body>
+    <p id="nums"></p>
+    <div>Addition Result: <span id="add-result"></span></div>
+    <div>Subtraction Result: <span id="sub-result"></span></div>
+    <div>Division Result: <span id="div-result"></span></div>
+    <div>Multiplication Result: <span id="mult-result"></span></div>
+</body>
+<script>
+    let num1 = 2;
+    let num2 = 4;
+    document.getElementById(
+        "nums"
+    ).innerText = `First Number: ${num1} Second Number: ${num2}`;
+
+    // fetch routes
+    // addition
+    fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById("add-result").innerHTML = data.result;
+        });
+
+    // subtraction
+    fetch(`/calculator/sub?num1=${num1}&num2=${num2}`)
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById("sub-result").innerHTML = data.result;
+        });
+
+    // divison
+    fetch(`/calculator/div?num1=${num1}&num2=${num2}`)
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById("div-result").innerHTML = data.result;
+        });
+
+    // multiplication
+    fetch(`/calculator/mult?num1=${num1}&num2=${num2}`)
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById("mult-result").innerHTML = data.result;
+        });
+</script>
+
+</html>

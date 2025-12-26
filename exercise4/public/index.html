@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 4</title>
+    <style>
+        .btn-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #2563eb;
+
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-link:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-link:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Module 5 Exercise 4</h2>
+    <a href="/friends" class="btn-link">Friends</a>
+    <br />
+    <a href="/friends/filter?letter=r" class="btn-link">Filter Friends by R</a>
+    <br />
+    <a href="/friends/info" class="btn-link">Friends info</a>
+    <br />
+    <a href="/friends/1" class="btn-link">First Friend</a>
+    <br />
+    <button class="btn-link" onclick="changeFriend()">Change Friend</button>
+
+    <script>
+        const changeFriend = () => {
+            fetch("/friends/1", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: "Ali T", gender: "male" }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    window.location.href = "/friends/1"
+                })
+        }
+    </script>
+</body>
+
+</html>
