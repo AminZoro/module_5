@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const path = require("path");
-const calcRoutes = require('./routes/calculator.js')
+const calcRoutes = require("./routes/calculator.js");
 
 // middleware
 app.use("/", express.static(path.join(__dirname, "public")));
@@ -12,7 +12,6 @@ app.get("/", (req, res) => {
   res.send("Exercise 3");
 });
 
-// use imported routes
 app.use("/calculator", calcRoutes);
 
 // listen

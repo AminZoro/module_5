@@ -7,10 +7,6 @@ router.get("/", (req, res) => {
   res.json(friends);
 });
 
-// **********************************************************
-// TODO - #1: Add support to the 'filter' endpoint for a new
-// query parameter 'letter' which filters friends by starting letter
-
 router.get("/filter", (req, res) => {
   let letter = req.query.letter.toUpperCase();
   let newFriendsArray = [...friends];
@@ -24,13 +20,6 @@ router.get("/filter", (req, res) => {
   res.status(200).json(newFriendsArray);
 });
 
-// http://localhost:3000/friends/filter?letter=r
-// [{"id":5,"name":"Ross","gender":"male"},{"id":6,"name":"Rachael","gender":"female"}]
-
-// **********************************************************
-// TODO - #2: Modify the 'info' route to only return
-// the user-agent, content-type and accept header data
-
 router.get("/info", (req, res) => {
   res.json({
     "user-agent": req.headers["user-agent"],
@@ -40,9 +29,9 @@ router.get("/info", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  // set id to dynamic parameter
+  // set id
   let friendId = req.params.id;
-  // find friend with set id
+  // find friend
   let rqdFriend = friends.find((friend) => {
     return friend.id == friendId;
   });
@@ -50,21 +39,20 @@ router.get("/:id", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  // get set friend id from req.params
   let friendId = req.params.id;
-  // get set update to friends data from req.body
+
   let friendNewData = req.body;
-  // find friend in friends by id
+
   let foundFriend = friends.find((friend) => {
     return friend.id == friendId;
   });
-  // find index of friend in friends
+
   let index = friends.indexOf(foundFriend);
-  // merge friends data with updated data
+  // merge friends
   let updatedFriend = { ...foundFriend, ...friendNewData };
-  // replace friend data in friends by index
+
   friends[index] = updatedFriend;
-  // response - status - json
+
   res.status(200).json(updatedFriend);
 });
 
